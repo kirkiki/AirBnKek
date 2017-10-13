@@ -1,0 +1,12 @@
+extends layout
+block sendMail
+    .container
+        .jumbotron
+            h4 Send mail to the owner
+        form(method="post", action="/mail/#{senderId}/#{receiverId}")
+            .form-group
+                input.form-control(type="text", placeholder="subject", name="subject")
+            .form-group
+                textarea.form-control(rows="10", placeholder="Your message", name="message")
+            .form-group
+                input.btn.btn-success(type="submit" value="Send")

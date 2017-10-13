@@ -1,27 +1,14 @@
 const chalk = require('chalk');
+let userList = require('../data/usersData');
 const Users = {
-    userList: [{
-            "id": 1,
-            "mail": "aria.groult@ynov.com",
-            "username": "Aria",
-            "password": "azerty"
-        },
-        {
-            "id": 2,
-            "mail": "ronan.robnineau@ynov.com",
-            "username": "Ronan",
-            "password": "ka7rba"
-        }
-    ],
-
     login: function (req, res, next) {
         var username = req.body.username;
         var password = req.body.password;
         var loginSuccessfull = false;
 
-        for (let i = 0; i < Users.userList.length; i++) {
-            if (Users.userList[i].username === username) {
-                if (Users.userList[i].password === password) {
+        for (let i = 0; i < userList.users.length; i++) {
+            if (userList.users[i].username === username) {
+                if (userList.users[i].password === password) {
                     loginSuccessfull = true;
                     var newUser = {
                         username: username,
@@ -29,7 +16,7 @@ const Users = {
                         mail: Users.userList[i].mail,
                         id: Users.userList[i].id
                     }
-                    res.status(200).redirect('/home/' + Users.userList[i].id);
+                    res.status(200).redirect('/home/' + userList.users[i].id);
                 }
             }
         }
@@ -38,8 +25,25 @@ const Users = {
         }
     },
 
-    displayUserProfil: function (req, res, next) {
+    getUser: function (id) {
+        for (var i = 0; i < userList.users.length; i++) {
+            if (userList.users[i].id == id) {
+                return userList.users[i];
+            }
+        }
+    },
 
+    update: function (req, id) {
+        let formData = {};
+        formData.username = req.body.username;
+        formData.mail = req.body.mail;
+        formData.password = req.body.password;
+
+        for (let i = 0; i < userList.users.length; i++) {
+            userList.users[i].username = formData.username;
+            userList.users[i].mail = formData.mail;
+            userList.users[i].password = formData.password;
+        }
     }
 }
 

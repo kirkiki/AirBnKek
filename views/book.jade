@@ -1,0 +1,14 @@
+extends layout
+block book
+    .container
+        .jumbotron
+            h1 When would you like to book
+        form(action="/home/#{idUser}/book/#{idHome}", method="post")
+            .form-group
+                label(for="inputStartDate") Start Date
+                input.form-control(id="inputStartDate", type="datetime-local", name="startDate")
+            .form-group
+                label(for="inputEndDate") End Date
+                input.form-control(id="inputEndDate", type="datetime-local", name="endDate")
+            .form-group
+            input.btn.btn-success(type="submit", value="OK")

@@ -1,6 +1,33 @@
 extends layout
 
 block home
-    |hello from home
-    div
-        a(href="/profile/#{id}") Profil
+    .container
+        .jumbotron
+            h1 Hey! This is the list of homes
+            div
+                | You can also go on your 
+                u
+                    a(href="/profile/#{id}") Profil   
+        form(method="get", action="/home/search/")      
+            .form-group.row
+                input.form-control.col-sm-11(type="text", placeholder="Search : id/title/description/booked", name="search")
+                button.btn.btn-success(type="submit") Search
+        table.table
+            thead
+                tr
+                th id
+                th title
+                th description
+                th booked
+                th
+            tbody
+                - for (var i = 0; i < homes.length; ++i) {
+                    tr
+                        th(scope='row') #{homes[i].id}
+                        td #{homes[i].title}
+                        td #{homes[i].description}
+                        td #{homes[i].booked}
+                        td
+                            a(href="/home/#{id}/details/#{homes[i].id}")
+                                .btn.btn-info Voir 
+                - }

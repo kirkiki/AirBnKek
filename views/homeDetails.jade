@@ -1,0 +1,27 @@
+extends layout
+block homeDetails
+    .container
+        .jumbotron
+            h1 #{home.title}
+            h3 #{home.description}
+            h6 Contact the
+                a(href="/mail/#{user.id}/#{home.idOfPossessor}")  Owner
+            - if(home.booked == false){
+                a(href="/home/#{user.id}/book/#{home.id}")
+            button.btn.btn-success Book
+            -}else{
+            button.btn.btn-danger(disabled) Already Booked
+        table.table
+            thead
+                tr
+                    th Booked by 
+                    th Start Date
+                    th End Date
+            tbody
+                tr
+                    td #{user.username}
+                    td #{home.bookingInfo.startDate}
+                    td #{home.bookingInfo.endDate}
+                -}
+        a(href="/home/#{user.id}")
+        button.btn.btn-info Home

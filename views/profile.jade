@@ -1,7 +1,27 @@
 extends layout
 
 block profile
-    div
-        |#{username}
-    div
-        |#{mail}
+    .container
+        .header
+            | Welcome on your profile #{username}! You can change your account Data right here too 
+            i(class="em em-boom")
+            i(class="em em-sunglasses")           
+        form(method='post' action='/profile/#{id}/update')
+            .form-group.row
+                label.col-sm-2.col-form-label(for='inputEmail3') Email
+                .col-sm-12
+                    input#inputEmail3.form-control(type='email', value='#{mail}', name="mail")
+            .form-group.row
+                label.col-sm-2.col-form-label(for='inputUsername') Username
+                .col-sm-12
+                    input#inputUsername.form-control(type='text', value='#{username}', name="username")
+            .form-group.row
+                label.col-sm-2.col-form-label(for='inputPassword') Password
+                .col-sm-12
+                    input#inputPassword.form-control(type='password', value='#{password}', name="password")
+            .form-group.row
+                .offset-sm-2.col-sm-10
+                    button.btn.btn-success(type='submit') Change Data
+        a(href="/home/#{id}")
+            button.btn.btn-info(style="margin-left: 20px") Home
+    
