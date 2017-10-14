@@ -1,0 +1,31 @@
+extends layout
+block chat
+    .container
+        .jumbotron
+            h1 Welcome on the community chat
+            h4 Where you can chat with the other members of the community
+            a(href="/home/#{userID}")
+                button.btn.btn-info Home
+        ul(id="messages")
+        form(action="")
+            input(id="m" autocomplete="off")
+            button.btn.btn-success Send
+    script(src='/socket.io/socket.io.js')
+    script(src='https://code.jquery.com/jquery-1.11.1.js')
+    script.
+        $(function () {
+            var socket = io();
+                $('form').submit(function(){
+                socket.emit('chat message', $('#m').val());
+                $('#m').val('');
+                return false;
+            });
+            socket.on('chat message', function(msg){
+                $('#messages').append($('<li>').text(msg));
+            });
+        });
+
+
+        
+
+            

@@ -4,6 +4,8 @@ block home
     .container
         .jumbotron
             h1 Hey! This is the list of homes
+            a(href="/chat/#{id}")
+                button.btn.btn-info Chat with other users
             div
                 | You can also go on your 
                 u
@@ -31,3 +33,4 @@ block home
                             a(href="/home/#{id}/details/#{homes[i].id}")
                                 .btn.btn-info Voir 
                 - }
+        

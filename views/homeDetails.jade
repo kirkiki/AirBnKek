@@ -8,7 +8,7 @@ block homeDetails
                 a(href="/mail/#{user.id}/#{home.idOfPossessor}")  Owner
             - if(home.booked == false){
                 a(href="/home/#{user.id}/book/#{home.id}")
-            button.btn.btn-success Book
+                    button.btn.btn-success Book
             -}else{
             button.btn.btn-danger(disabled) Already Booked
         table.table
@@ -24,4 +24,4 @@ block homeDetails
                     td #{home.bookingInfo.endDate}
                 -}
         a(href="/home/#{user.id}")
-        button.btn.btn-info Home
+            button.btn.btn-info Home

@@ -13,8 +13,8 @@ const Users = {
                     var newUser = {
                         username: username,
                         password: password,
-                        mail: Users.userList[i].mail,
-                        id: Users.userList[i].id
+                        mail: userList.users[i].mail,
+                        id: userList.users[i].id
                     }
                     res.status(200).redirect('/home/' + userList.users[i].id);
                 }
