@@ -4,6 +4,8 @@ var Homes = require('../controllers/Homes');
 var Users = require('../controllers/Users');
 var chalk = require('chalk');
 
+
+
 router.get('/:id', (req, res, next) => {
     let homes = Homes.getHomes();
     var user = Users.getUser(req.params.id);
@@ -15,6 +17,14 @@ router.get('/:id', (req, res, next) => {
             homes: homes
         });
     }
+});
+router.get("/:id/search", (req,res,next)=> {
+    
+    var home = Homes.getSearchHome(req.query.search)
+    res.render("home", {
+        id: req.params.id,   
+        homes: [home]
+    })
 });
 
 router.get('/:idUser/details/:idHome', (req, res, next) => {

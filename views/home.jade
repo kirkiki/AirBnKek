@@ -10,7 +10,7 @@ block home
                 | You can also go on your 
                 u
                     a(href="/profile/#{id}") Profil   
-        form(method="get", action="/home/search/")      
+        form(method="get", action="/home/#{id}/search/")      
             .form-group.row
                 input.form-control.col-sm-11(type="text", placeholder="Search : id/title/description/booked", name="search")
                 button.btn.btn-success(type="submit") Search

@@ -21,8 +21,18 @@ const Homes = {
                 homeList.homes[i].bookedBy = user.id;
             }
         }
+    },
+    getSearchHome: function(str){
+        let reg = new RegExp(str,"g");    
+        console.log("ok") 
+        for (let i = 0; i < homeList.homes.length; i++) {
+            if (homeList.homes[i].title.match(reg)) {
+                console.log(homeList.homes[i])
+                return homeList.homes[i];
+            }
+        }
+        return null;
     }
-
 }
 
 module.exports = Homes;
