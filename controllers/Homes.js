@@ -22,12 +22,10 @@ const Homes = {
             }
         }
     },
-    getSearchHome: function(str){
-        let reg = new RegExp(str,"g");    
-        console.log("ok") 
+    getSearchHome: function (str) {
+        let reg = new RegExp(str, "g");
         for (let i = 0; i < homeList.homes.length; i++) {
             if (homeList.homes[i].title.match(reg)) {
-                console.log(homeList.homes[i])
                 return homeList.homes[i];
             }
         }
