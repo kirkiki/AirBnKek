@@ -1,5 +1,6 @@
 const chalk = require('chalk');
 let userList = require('../data/usersData');
+
 const Users = {
     login: function (req, res, next) {
         var username = req.body.username;

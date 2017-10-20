@@ -4,6 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var chalk = require('chalk');
+var mongoose = require('mongoose');
+
+var MongoClient = require('mongodb').MongoClient,
+  assert = require('assert');
+
+// Connection URL
+var url = 'mongodb://localhost:27017/AirBnKek';
 
 var index = require('./routes/index');
 var home = require('./routes/home');
