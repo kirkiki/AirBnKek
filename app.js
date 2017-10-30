@@ -7,16 +7,20 @@ var bodyParser = require('body-parser');
 var chalk = require('chalk');
 var mongoose = require('mongoose');
 
-var MongoClient = require('mongodb').MongoClient,
-  assert = require('assert');
+mongoose.Promise = global.Promise;
 
-// Connection URL
-var url = 'mongodb://localhost:27017/AirBnKek';
+mongoose.createConnection('mongodb://localhost/potato', function(err) {
+  if (err) { throw err; }
+  else{
+    console.log(chalk.green('Mongodb Connected'));
+  }
+});
 
 var index = require('./routes/index');
 var home = require('./routes/home');
 var mail = require('./routes/mail');
 var chat = require('./routes/chat');
+var signUp = require('./routes/signUp');
 
 var app = express();
 
@@ -39,6 +43,7 @@ app.use('/', index);
 app.use('/home', home);
 app.use('/mail', mail);
 app.use('/chat', chat);
+app.use('/signup', signUp);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,7 +1,20 @@
 const chalk = require('chalk');
 let userList = require('../data/usersData');
+let User = require('../models/user');
+const guid = require('guid');
 
 const Users = {
+
+    signUp: function(req, res, next){
+        let user = new User({
+            id: guid.create(),
+            mail: req.body.email,
+            username: req.body.username,
+            password: req.body.password
+        });
+        console.log(user);
+    },
+
     login: function (req, res, next) {
         var username = req.body.username;
         var password = req.body.password;

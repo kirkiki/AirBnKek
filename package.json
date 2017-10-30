@@ -11,6 +11,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.15.5",
+    "guid": "0.0.12",
     "jade": "~1.11.0",
     "mongodb": "^2.2.33",
     "mongoose": "^4.12.3",
